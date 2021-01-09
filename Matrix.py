@@ -26,3 +26,19 @@ class Matrix:
             return Matrix(self.__matrix[item])
 
         raise Exception('올바르지 않은 접근입니다.')
+
+    @staticmethod
+    def make(value, *args):
+        if len(args) == 0 or len(args) > 2:
+            raise Exception('인자 갯수는 1 ~ 2 개여야 합니다.')
+
+        r, c = args[0], args[0] if len(args) < 2 else args[1]
+        return Matrix([[value for _ in range(c)] for _ in range(r)])
+
+    @staticmethod
+    def zeros(*args):
+        return Matrix.make(0, *args)
+
+    @staticmethod
+    def ones(*args):
+        return Matrix.make(1, *args)
